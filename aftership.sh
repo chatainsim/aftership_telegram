@@ -23,7 +23,7 @@ while read LINE; do
 		cp $PPATH/last.$COLIS $PPATH/old.$COLIS
 		#tracking_postal_code
 		if [ "$SLUG" != "colis-prive" ]; then
-			curl -s -H "Content-Type: application/json" -H "aftership-api-key: $API" \
+			curl -s -X POST -H "Content-Type: application/json" -H "aftership-api-key: $API" \
 			-d "{\"tracking\": {\"tracking_number\": \"$COLIS\", \"slug\": \"$SLUG\"}}" $URL > $PPATH/add.$COLIS
 			exit 0
 		else
